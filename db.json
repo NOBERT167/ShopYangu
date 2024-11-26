@@ -1,0 +1,126 @@
+{
+  "shops": [
+    {
+      "id": 1,
+      "name": "Tech Haven",
+      "description": "A shop for all tech products",
+      "logo": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Fashion Fiesta",
+      "description": "Your fashion destination",
+      "logo": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "name": "Home Comforts",
+      "description": "Essentials for your home",
+      "logo": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 4,
+      "name": "Outdoor Adventures",
+      "description": "Gear up for your next adventure",
+      "logo": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 5,
+      "name": "Book Nook",
+      "description": "A haven for book lovers",
+      "logo": "https://via.placeholder.com/150"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "shopId": 1,
+      "name": "Laptop Pro",
+      "price": 1200,
+      "stock": 10,
+      "description": "A high-end laptop for professionals",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "shopId": 2,
+      "name": "Designer Jacket",
+      "price": 200,
+      "stock": 5,
+      "description": "Stylish jacket for all seasons",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "shopId": 3,
+      "name": "Luxury Sofa",
+      "price": 850,
+      "stock": 3,
+      "description": "Elegant and comfortable sofa for your living room",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 4,
+      "shopId": 4,
+      "name": "Hiking Boots",
+      "price": 120,
+      "stock": 15,
+      "description": "Durable and lightweight boots for outdoor adventures",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 5,
+      "shopId": 5,
+      "name": "Mystery Novel",
+      "price": 20,
+      "stock": 50,
+      "description": "A thrilling mystery novel for book enthusiasts",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 6,
+      "shopId": 1,
+      "name": "Smartphone XL",
+      "price": 999,
+      "stock": 25,
+      "description": "A smartphone with cutting-edge features",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 7,
+      "shopId": 2,
+      "name": "Casual Sneakers",
+      "price": 75,
+      "stock": 30,
+      "description": "Comfortable and stylish sneakers for daily wear",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 8,
+      "shopId": 3,
+      "name": "Dining Table Set",
+      "price": 650,
+      "stock": 2,
+      "description": "Beautiful dining table with matching chairs",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 9,
+      "shopId": 4,
+      "name": "Camping Tent",
+      "price": 250,
+      "stock": 8,
+      "description": "Spacious tent for family camping trips",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 10,
+      "shopId": 5,
+      "name": "Cookbook",
+      "price": 30,
+      "stock": 100,
+      "description": "A collection of delicious recipes",
+      "image": "https://via.placeholder.com/150"
+    }
+  ]
+}
