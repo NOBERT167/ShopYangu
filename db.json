@@ -121,6 +121,15 @@
       "stock": 100,
       "description": "A collection of delicious recipes",
       "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "5f01",
+      "name": "Iphone 16 Pro Max",
+      "price": 200000,
+      "stock": 9,
+      "description": "iPhone 16 Pro is splash, water and dust resistant. It also has our latest-generation Ceramic Shield material that's two times tougher than any smartphone glass.",
+      "image": "https://applecenter.co.ke/wp-content/uploads/2024/09/iPhone-16-All-Colors.jpg",
+      "shopId": 1
     }
   ]
 }

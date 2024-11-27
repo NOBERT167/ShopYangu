@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import ProductDropdown from "./ProductDropdown";
 
 interface Shop {
   id: number;
@@ -112,6 +113,7 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
             </CardHeader>
             <CardContent>
               <p className="mb-4">{shop.description}</p>
+              <ProductDropdown shopId={shop.id} />
               <div className="mt-4 flex space-x-2">
                 <Button variant="secondary" onClick={() => setEditShop(shop)}>
                   Edit
