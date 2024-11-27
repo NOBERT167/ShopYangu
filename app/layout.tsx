@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import { Sidebar } from "@/components/ui/sidebar";
+import SidebarDesktop from "./Components/SidebarDesktop";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,10 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className="dark">
+        <SidebarDesktop />
+        <ToastContainer position="top-right" autoClose={3000} />
+        <main className="ml-[300px] mt-3">{children}</main>
       </body>
     </html>
   );

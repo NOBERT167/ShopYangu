@@ -1,39 +1,45 @@
 {
   "shops": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Tech Haven",
-      "description": "A shop for all tech products",
+      "description": "A shop for all tech related products",
       "logo": "https://via.placeholder.com/150"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Fashion Fiesta",
       "description": "Your fashion destination",
       "logo": "https://via.placeholder.com/150"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Home Comforts",
       "description": "Essentials for your home",
       "logo": "https://via.placeholder.com/150"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Outdoor Adventures",
       "description": "Gear up for your next adventure",
       "logo": "https://via.placeholder.com/150"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Book Nook",
       "description": "A haven for book lovers",
       "logo": "https://via.placeholder.com/150"
+    },
+    {
+      "id": "3de0",
+      "name": "Shoe Plug 254",
+      "description": "Your ultimate shoe plug ",
+      "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAACUCAMAAACtIJvYAAAAY1BMVEX///8AAAD19fVdXV0gICCKiorY2NglJSV8fHz6+vrt7e0+Pj7q6uqAgIDHx8fg4OC2traUlJQPDw+jo6OamprPz8/BwcExMTFmZmZVVVU3NzdwcHBGRkarq6ssLCwVFRVNTU3BowceAAAEtElEQVR4nO2b69KiMAyGOSNSTiKgIOr9X+UCQptCC+InltnJ82NnloXykqZpkrqahiAIgiAIgiAIgiAIgiD/J4YTJ0kdEk+1EEAenPQX5TlSLabHuegA1zZUC2qp9RFlqFqSph3GonT9VKsWdZ6KarDVev1k+nouR4WiPIkoXfcVrsUAepPF61Lm89Gd2abOnNDmZKWKVMXMvV9BitygrIMan6fh8zJcMSoo66rE54e3P4Brc6GiyL75OhLGabw84vDyCk5VDGU98m9JiuzBic18dk+jccHmLjs+1GVLHl6J7YIxTWfmTkPy5ojz+W/EeafQeZL1qvg4pvvkr6Kihz5GPgVyVR5nLX/O4O+Iuk9Ezcgisju8y2iI+E+qbroI2WLMZKqqyRAzfrBIPBmt4yZZifT2M3fZGFuq5fMkwriKVckmgPo0F5S8qaVa/E9l0RnRLTvMaqbRF95OyuHf4SITWqob88OAmtIRukUD9jShsejtLrjIWSoJuSX9mc/Tr+y/ynsOF0qBZ9G4AJ2ds1QyDqiHT1QNM/IcXCCfGQ8YhYUjLiR0Ygk3odUHzjWV4POvgLDa5kK3lLGlWlIdUqxPnKeqQKg4cJNIgPsALwbJaC9qXAO5qxNnwXSBWFHGzCYxyNGvcAgqSyKqYW2xKFDlwPHKJDsejyQMSnDR4jc5e0nUap8XPZaKxoWMl7u9JKpJj1b5vPBjBBU7JJiMYtMdKAH3+SfwF2tNEiE2sXgDGUQJUrqgFwUtZRo5fMxa4VxiVXwKxzOX/kJLVc0CzrjEOXg7FZSokjYT5rYQD4oyO4seOVnlu9uiTJUWmSJN1VxENMBWU71CXTZ6/pa91X+Tqmr2nkk+eF34VmYZ8/Xy0BoPoZv1G7pmVLX12JMWP+7TXt45hmytLxZDkbmbj4udhRbvrKq2T5zXaRAkde68ZfqXtQZLTcuUAf9ysJNzmtZ1JgpkC6pW01rrMGupCY9DOF6c31alGYXZiwKWKhORHGC6hJ+Jr6tqAkT3J4ygBdEiWRI9kMCZ3EBVB7RU0W42Xjxdj7y9QLG3kSoDvO4+WCGV1VM9bNfYylZsAku2LRv5vC4qaytVWtYnDAW/8o915ctEsf7hZqr6wCDoghCnrsZdoJG1tlPVWauQJnsGiRrCOuH323RrVY213jkXMBwumyNbq9ImMVuCAxZBF4M3VfU2HsjJ892oglXlfUeqWMOjbejtRhW5Aym7UcU6CSXZkSqNVo/ZnlTRWjLdkyra3wiYKkM50dBguVFVd1M9Q1poUVV74qSdlm/6OSdtIZlWgqXNJIbK8OdaQsoIlruNCkgnrZw9kGkRzeutu6WSO1137akBzQJlJ4I/grXk2s2PlZOVUlWspOhad+xHA1/6GcJHsAz5dcYHzm3UyQKHQa92MDxJu/7xvP9DYOU1nKZFYFG69p9/HrEawv3yhNa1fCQ1z3no/IowP4sq+o7xuc3Jcn+DNU5ZuJRY2PFXgMlNrTF7nPQzqnEgt5ef2RxBYBIcbvwWS3g6fVzoiW9MIuu/EVvWGNyaYjZMHuPAXR7jy7hBvHgo7ZGsPtu/4lxnu/ofDgiCIAiCIAiCIAiCIAiyzD91PT/C40FrPwAAAABJRU5ErkJggg=="
     }
   ],
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "shopId": 1,
       "name": "Laptop Pro",
       "price": 1200,
@@ -42,7 +48,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 2,
+      "id": "2",
       "shopId": 2,
       "name": "Designer Jacket",
       "price": 200,
@@ -51,7 +57,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 3,
+      "id": "3",
       "shopId": 3,
       "name": "Luxury Sofa",
       "price": 850,
@@ -60,7 +66,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 4,
+      "id": "4",
       "shopId": 4,
       "name": "Hiking Boots",
       "price": 120,
@@ -69,7 +75,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 5,
+      "id": "5",
       "shopId": 5,
       "name": "Mystery Novel",
       "price": 20,
@@ -78,7 +84,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 6,
+      "id": "6",
       "shopId": 1,
       "name": "Smartphone XL",
       "price": 999,
@@ -87,7 +93,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 7,
+      "id": "7",
       "shopId": 2,
       "name": "Casual Sneakers",
       "price": 75,
@@ -96,7 +102,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 8,
+      "id": "8",
       "shopId": 3,
       "name": "Dining Table Set",
       "price": 650,
@@ -105,7 +111,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 9,
+      "id": "9",
       "shopId": 4,
       "name": "Camping Tent",
       "price": 250,
@@ -114,7 +120,7 @@
       "image": "https://via.placeholder.com/150"
     },
     {
-      "id": 10,
+      "id": "10",
       "shopId": 5,
       "name": "Cookbook",
       "price": 30,
