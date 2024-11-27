@@ -1,7 +1,10 @@
-"use client";
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 interface ShopFormProps {
   onShopAdded: () => void;
@@ -31,43 +34,50 @@ const ShopForm: React.FC<ShopFormProps> = ({ onShopAdded }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded shadow-md">
-      <h2 className="text-lg font-bold mb-4">Add New Shop</h2>
-      <div className="mb-4">
-        <label className="block mb-2">Shop Name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2">Shop Description</label>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2">Shop Logo URL</label>
-        <input
-          type="text"
-          value={logo}
-          onChange={(e) => setLogo(e.target.value)}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Add Shop
-      </button>
-    </form>
+    <Card className="bg-white dark:bg-gray-800 shadow-md">
+      <CardHeader>
+        <h2 className="text-lg font-bold">Add New Shop</h2>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block mb-2 text-sm font-medium">Shop Name</label>
+            <Input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="dark:bg-gray-700 dark:text-gray-200"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium">
+              Shop Description
+            </label>
+            <Textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              className="dark:bg-gray-700 dark:text-gray-200"
+            />
+          </div>
+          <div>
+            <label className="block mb-2 text-sm font-medium">
+              Shop Logo URL
+            </label>
+            <Input
+              type="text"
+              value={logo}
+              onChange={(e) => setLogo(e.target.value)}
+              className="dark:bg-gray-700 dark:text-gray-200"
+            />
+          </div>
+          <Button type="submit" variant="default" className="dark:bg-blue-600">
+            Add Shop
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 

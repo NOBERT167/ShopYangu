@@ -132,29 +132,29 @@ const Dashboard = () => {
   if (!isClient) return null;
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 shadow-md">
           <CardHeader>Total Shops</CardHeader>
           <CardContent>{metrics.totalShops}</CardContent>
         </Card>
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 shadow-md">
           <CardHeader>Total Products</CardHeader>
           <CardContent>{metrics.totalProducts}</CardContent>
         </Card>
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 shadow-md">
           <CardHeader>Total Stock</CardHeader>
           <CardContent>{metrics.totalStock}</CardContent>
         </Card>
-        <Card>
+        <Card className="bg-white dark:bg-gray-800 shadow-md">
           <CardHeader>Total Value</CardHeader>
           <CardContent>${metrics.totalValue.toLocaleString()}</CardContent>
         </Card>
       </div>
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Stock Distribution</h2>
-        <div className="bg-white p-6 rounded-lg shadow-md">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
           <Bar data={chartData} />
         </div>
       </div>

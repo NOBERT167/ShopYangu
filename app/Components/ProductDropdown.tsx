@@ -1,6 +1,13 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Product {
   id: number;
@@ -15,40 +22,61 @@ interface ProductDropdownProps {
 
 const ProductDropdown: React.FC<ProductDropdownProps> = ({ shopId }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    if (isOpen) {
-      axios
-        .get(`http://localhost:5000/products?shopId=${shopId}`)
-        .then((response) => setProducts(response.data))
-        .catch((error) => console.error("Error fetching products:", error));
+  const fetchProducts = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get<Product[]>(
+        `http://localhost:5000/products?shopId=${shopId}`
+      );
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setIsLoading(false);
     }
-  }, [isOpen, shopId]);
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    if (open) {
+      fetchProducts(); // Fetch products only when opening
+    }
+  };
 
   return (
-    <div>
-      <button
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="bg-gray-200 px-4 py-2 rounded"
-      >
-        {isOpen ? "Hide Products" : "Show Products"}
-      </button>
-      {isOpen && (
-        <ul className="mt-2 border rounded p-2 bg-white">
-          {products.length > 0 ? (
-            products.map((product) => (
-              <li key={product.id} className="mb-2">
-                <strong>{product.name}</strong> - ${product.price} (Stock:{" "}
-                {product.stock})
-              </li>
-            ))
-          ) : (
-            <li>No products found for this shop.</li>
-          )}
-        </ul>
-      )}
-    </div>
+    <DropdownMenu onOpenChange={handleOpenChange}>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          className="w-full text-sm dark:bg-gray-700 dark:text-gray-200"
+        >
+          {isOpen ? "Hide Products" : "Show Products"}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-64 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+        {isLoading ? (
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+          </div>
+        ) : products.length > 0 ? (
+          products.map((product) => (
+            <DropdownMenuItem key={product.id} className="flex flex-col">
+              <span className="font-semibold">{product.name}</span>
+              <span className="text-sm">
+                Price: ${product.price} | Stock: {product.stock}
+              </span>
+            </DropdownMenuItem>
+          ))
+        ) : (
+          <DropdownMenuItem>No products found for this shop.</DropdownMenuItem>
+        )}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 

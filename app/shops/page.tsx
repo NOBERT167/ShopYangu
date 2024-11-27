@@ -30,12 +30,12 @@ const ShopsPage: React.FC = () => {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Shops Management</h1>
+      <div className="mb-6">
+        <ShopForm onShopAdded={fetchShops} />
+      </div>
       <div>
         <h2 className="text-xl font-bold mb-4">List of Shops</h2>
         <ShopList shops={shops} onShopUpdated={fetchShops} />
-      </div>
-      <div className="mb-6">
-        <ShopForm onShopAdded={fetchShops} />
       </div>
     </div>
   );

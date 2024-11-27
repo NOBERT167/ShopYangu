@@ -1,8 +1,10 @@
-"use client";
 import React, { useState } from "react";
 import axios from "axios";
-import ProductDropdown from "./ProductDropdown";
 import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 interface Shop {
   id: number;
@@ -13,22 +15,24 @@ interface Shop {
 
 interface ShopListProps {
   shops: Shop[];
-  onShopUpdated: () => void;
+  onShopUpdated: () => void; // Callback to refresh the shop list
 }
 
 const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
   const [editShop, setEditShop] = useState<Shop | null>(null);
 
+  // Handle delete
   const handleDelete = async (id: number) => {
     try {
       await axios.delete(`http://localhost:5000/shops/${id}`);
       toast.success("Shop deleted successfully!");
-      onShopUpdated();
+      onShopUpdated(); // Refresh the shop list
     } catch (error) {
       toast.error("Failed to delete shop. Please try again.");
     }
   };
 
+  // Handle update
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editShop) return;
@@ -36,83 +40,91 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
     try {
       await axios.put(`http://localhost:5000/shops/${editShop.id}`, editShop);
       toast.success("Shop updated successfully!");
-      setEditShop(null);
-      onShopUpdated();
+      setEditShop(null); // Exit edit mode
+      onShopUpdated(); // Refresh the shop list
     } catch (error) {
       toast.error("Failed to update shop. Please try again.");
     }
   };
 
+  // Handle input changes during editing
+  const handleInputChange = (field: keyof Shop, value: string) => {
+    if (editShop) {
+      setEditShop({ ...editShop, [field]: value });
+    }
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {shops.map((shop) =>
         editShop?.id === shop.id ? (
-          <form
-            key={shop.id}
-            onSubmit={handleUpdate}
-            className="p-4 border rounded shadow-md"
-          >
-            <h3 className="text-lg font-bold mb-2">Edit Shop</h3>
-            <input
-              type="text"
-              value={editShop.name}
-              onChange={(e) =>
-                setEditShop({ ...editShop, name: e.target.value })
-              }
-              required
-              className="w-full mb-2 p-2 border rounded"
-            />
-            <textarea
-              value={editShop.description}
-              onChange={(e) =>
-                setEditShop({ ...editShop, description: e.target.value })
-              }
-              required
-              className="w-full mb-2 p-2 border rounded"
-            />
-            <input
-              type="text"
-              value={editShop.logo}
-              onChange={(e) =>
-                setEditShop({ ...editShop, logo: e.target.value })
-              }
-              className="w-full mb-2 p-2 border rounded"
-            />
-            <button
-              type="submit"
-              className="bg-green-500 text-white px-4 py-2 rounded mr-2"
-            >
-              Save
-            </button>
-            <button
-              type="button"
-              onClick={() => setEditShop(null)}
-              className="bg-gray-500 text-white px-4 py-2 rounded"
-            >
-              Cancel
-            </button>
-          </form>
+          <Card key={shop.id}>
+            <CardHeader>
+              <h3 className="text-lg font-bold">Edit Shop</h3>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleUpdate} className="space-y-4">
+                <Input
+                  type="text"
+                  value={editShop.name}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
+                  required
+                  placeholder="Shop Name"
+                />
+                <Textarea
+                  value={editShop.description}
+                  onChange={(e) =>
+                    handleInputChange("description", e.target.value)
+                  }
+                  required
+                  placeholder="Shop Description"
+                />
+                <Input
+                  type="text"
+                  value={editShop.logo}
+                  onChange={(e) => handleInputChange("logo", e.target.value)}
+                  placeholder="Shop Logo URL"
+                />
+                <div className="flex space-x-2">
+                  <Button type="submit" variant="default">
+                    Save
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setEditShop(null)}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
         ) : (
-          <div key={shop.id} className="p-4 border rounded shadow-md">
-            <img src={shop.logo} alt={shop.name} className="w-16 h-16 mb-2" />
-            <h3 className="text-lg font-bold">{shop.name}</h3>
-            <p className="mb-2">{shop.description}</p>
-            <ProductDropdown shopId={shop.id} />
-            <div className="mt-4">
-              <button
-                onClick={() => setEditShop(shop)}
-                className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDelete(shop.id)}
-                className="bg-red-500 text-white px-4 py-2 rounded"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
+          <Card key={shop.id}>
+            <CardHeader>
+              <img
+                src={shop.logo}
+                alt={shop.name}
+                className="w-16 h-16 mb-2 rounded border dark:border-gray-700"
+              />
+              <h3 className="text-lg font-bold">{shop.name}</h3>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">{shop.description}</p>
+              <div className="mt-4 flex space-x-2">
+                <Button variant="secondary" onClick={() => setEditShop(shop)}>
+                  Edit
+                </Button>
+                <Button
+                  variant="destructive"
+                  onClick={() => handleDelete(shop.id)}
+                >
+                  Delete
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         )
       )}
     </div>

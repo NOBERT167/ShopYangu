@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { Sidebar } from "@/components/ui/sidebar";
 import SidebarDesktop from "./Components/SidebarDesktop";
+import { ThemeProvider } from "./Components/ThemeProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,10 +30,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="dark">
-        <SidebarDesktop />
-        <ToastContainer position="top-right" autoClose={3000} />
-        <main className="ml-[300px] mt-3">{children}</main>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SidebarDesktop />
+          <ToastContainer position="top-right" autoClose={3000} />
+          <main className="ml-[300px] mt-3">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
