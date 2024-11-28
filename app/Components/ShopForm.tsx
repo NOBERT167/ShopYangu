@@ -34,7 +34,7 @@ const ShopForm: React.FC<ShopFormProps> = ({ onShopAdded }) => {
   };
 
   return (
-    <Card className="bg-white dark:bg-gray-800 shadow-md">
+    <Card className="bg-background w-full sm:max-w-lg">
       <CardHeader>
         <h2 className="text-lg font-bold">Add New Shop</h2>
       </CardHeader>
@@ -72,7 +72,7 @@ const ShopForm: React.FC<ShopFormProps> = ({ onShopAdded }) => {
               className="dark:bg-gray-700 dark:text-gray-200"
             />
           </div>
-          <Button type="submit" variant="default" className="dark:bg-blue-600">
+          <Button type="submit" variant="default">
             Add Shop
           </Button>
         </form>

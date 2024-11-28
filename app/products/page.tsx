@@ -21,9 +21,8 @@ interface Product {
 
 const ProductsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [shops, setShops] = useState<Shop[]>([]); // Add state for shops
+  const [shops, setShops] = useState<Shop[]>([]);
 
-  // Fetch products
   const fetchProducts = async () => {
     try {
       const response = await axios.get("http://localhost:5000/products");
@@ -33,7 +32,6 @@ const ProductsPage: React.FC = () => {
     }
   };
 
-  // Fetch shops
   const fetchShops = async () => {
     try {
       const response = await axios.get("http://localhost:5000/shops");
@@ -45,13 +43,12 @@ const ProductsPage: React.FC = () => {
 
   useEffect(() => {
     fetchProducts();
-    fetchShops(); // Fetch shops when the page loads
+    fetchShops();
   }, []);
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Products Management</h1>
-      {/* Pass both shops and onProductAdded to ProductForm */}
       <ProductForm onProductAdded={fetchProducts} shops={shops} />
       <ProductList products={products} onProductUpdated={fetchProducts} />
     </div>

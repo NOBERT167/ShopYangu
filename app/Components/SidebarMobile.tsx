@@ -23,7 +23,11 @@ const SidebarMobile = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="fixed top-3 left-3" size="icon" variant="ghost">
+        <Button
+          className="fixed flex justify-start top-0 py-3 left-3 w-full bg-white dark:bg-slate-950"
+          size="icon"
+          variant="ghost"
+        >
           <Menu size={20} />
         </Button>
       </SheetTrigger>

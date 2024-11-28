@@ -102,12 +102,12 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
             </CardContent>
           </Card>
         ) : (
-          <Card key={shop.id}>
+          <Card key={shop.id} className="border-none shadow-lg">
             <CardHeader>
               <img
                 src={shop.logo}
                 alt={shop.name}
-                className="w-16 h-16 mb-2 rounded border dark:border-gray-700"
+                className="w-16 h-16 mb-2 rounded"
               />
               <h3 className="text-lg font-bold">{shop.name}</h3>
             </CardHeader>

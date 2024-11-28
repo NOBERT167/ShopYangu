@@ -68,75 +68,87 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded, shops }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <>
       <h2 className="text-xl font-bold mb-4">Add New Product</h2>
-      <Input
-        type="text"
-        value={name}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setName(e.target.value)
-        } // Typed here
-        required
-        placeholder="Product Name"
-      />
-      <Input
-        type="number"
-        value={price}
-        step="any"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setPrice(Number(e.target.value))
-        } // Typed here
-        required
-        placeholder="Price"
-      />
-      <Input
-        type="number"
-        value={stock}
-        step="1"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setStock(Number(e.target.value))
-        } // Typed here
-        required
-        placeholder="Stock Quantity"
-      />
-      <Textarea
-        value={description}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          setDescription(e.target.value)
-        } // Typed here
-        required
-        placeholder="Product Description"
-      />
-      <Input
-        type="text"
-        value={image}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setImage(e.target.value)
-        } // Typed here
-        placeholder="Image URL"
-      />
-      <div>
-        <label className="block mb-2 text-sm font-medium">Select Shop</label>
-        <Select
-          value={selectedShop}
-          onValueChange={(value: string) => setSelectedShop(value)} // Typed here
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select a shop" />
-          </SelectTrigger>
-          <SelectContent>
-            {shops.map((shop) => (
-              <SelectItem key={shop.id} value={shop.id.toString()}>
-                {shop.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-      <Button type="submit" variant="default">
-        Add Product
-      </Button>
-    </form>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 bg-background w-full sm:max-w-lg p-8 mb-10 rounded-md shadow-md"
+      >
+        <label className="block mb-2 text-sm font-medium">Product Name</label>
+        <Input
+          type="text"
+          value={name}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setName(e.target.value)
+          } // Typed here
+          required
+          placeholder="Product Name"
+        />
+        <label className="block mb-2 text-sm font-medium">Product Price</label>
+        <Input
+          type="number"
+          value={price}
+          step="any"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setPrice(Number(e.target.value))
+          } // Typed here
+          required
+          placeholder="Price"
+        />
+        <label className="block mb-2 text-sm font-medium">Stock</label>
+        <Input
+          type="number"
+          value={stock}
+          step="1"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setStock(Number(e.target.value))
+          } // Typed here
+          required
+          placeholder="Stock Quantity"
+        />
+        <label className="block mb-2 text-sm font-medium">
+          Product Description
+        </label>
+        <Textarea
+          value={description}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            setDescription(e.target.value)
+          } // Typed here
+          required
+          placeholder="Product Description"
+        />
+        <label className="block mb-2 text-sm font-medium">Image URL</label>
+        <Input
+          type="text"
+          value={image}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setImage(e.target.value)
+          } // Typed here
+          placeholder="Image URL"
+        />
+        <div>
+          <label className="block mb-2 text-sm font-medium">Select Shop</label>
+          <Select
+            value={selectedShop}
+            onValueChange={(value: string) => setSelectedShop(value)} // Typed here
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select a shop" />
+            </SelectTrigger>
+            <SelectContent>
+              {shops.map((shop) => (
+                <SelectItem key={shop.id} value={shop.id.toString()}>
+                  {shop.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <Button type="submit" variant="default">
+          Add Product
+        </Button>
+      </form>
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ import { ModeToggle } from "./ModeToggle";
 
 const SidebarDesktop = () => {
   return (
-    <aside className="w-[270px] max-w-xs h-screen fixed left-0 top-0 z-40 border-r">
+    <aside className="w-[270px] bg-background max-w-xs h-screen fixed left-0 top-0 z-40 border-r">
       <div className="h-full px-3 py-4">
         <div className="flex justify-between">
           <h3 className="mx-3 text-lg font-semibold text-foreground">

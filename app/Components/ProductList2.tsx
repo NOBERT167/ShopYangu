@@ -1,11 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { toast } from "react-toastify";
+
+interface Shop {
+  id: number;
+  name: string;
+}
 
 interface Product {
   id: number;
@@ -19,11 +22,13 @@ interface Product {
 
 interface ProductListProps {
   products: Product[];
+  shops: Shop[];
   onProductUpdated: () => void;
 }
 
 const ProductList: React.FC<ProductListProps> = ({
   products,
+  shops,
   onProductUpdated,
 }) => {
   const [editProduct, setEditProduct] = useState<Product | null>(null);
@@ -55,6 +60,24 @@ const ProductList: React.FC<ProductListProps> = ({
     }
   };
 
+  // Function to get the shop name by matching shopId
+  const getShopName = (shopId: number): string => {
+    console.log("Product Shop ID:", shopId); // Debug log
+    console.log("Shops Array:", shops); // Debug log
+
+    // Convert shopId to number to ensure matching types
+    const shop = shops.find((s) => s.id === Number(shopId));
+
+    // Debug log to check if the shop is found
+    if (shop) {
+      console.log("Found shop:", shop.name);
+    } else {
+      console.log("Shop not found for shopId:", shopId);
+    }
+
+    return shop ? shop.name : "Unknown Shop";
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {products.map((product) =>
@@ -65,15 +88,17 @@ const ProductList: React.FC<ProductListProps> = ({
             </CardHeader>
             <CardContent>
               <form onSubmit={handleUpdate} className="space-y-4">
-                <Input
+                <input
                   type="text"
                   value={editProduct.name}
                   onChange={(e) =>
                     setEditProduct({ ...editProduct, name: e.target.value })
                   }
                   required
+                  placeholder="Product Name"
+                  className="w-full border border-gray-300 p-2 rounded"
                 />
-                <Input
+                <input
                   type="number"
                   value={editProduct.price}
                   onChange={(e) =>
@@ -83,19 +108,10 @@ const ProductList: React.FC<ProductListProps> = ({
                     })
                   }
                   required
+                  placeholder="Price"
+                  className="w-full border border-gray-300 p-2 rounded"
                 />
-                <Input
-                  type="number"
-                  value={editProduct.stock}
-                  onChange={(e) =>
-                    setEditProduct({
-                      ...editProduct,
-                      stock: Number(e.target.value),
-                    })
-                  }
-                  required
-                />
-                <Textarea
+                <textarea
                   value={editProduct.description}
                   onChange={(e) =>
                     setEditProduct({
@@ -104,40 +120,42 @@ const ProductList: React.FC<ProductListProps> = ({
                     })
                   }
                   required
+                  placeholder="Description"
+                  className="w-full border border-gray-300 p-2 rounded"
                 />
-                <Input
-                  type="text"
-                  value={editProduct.image}
-                  onChange={(e) =>
-                    setEditProduct({ ...editProduct, image: e.target.value })
-                  }
-                />
-                <Button type="submit" variant="default">
-                  Save
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setEditProduct(null)}
-                >
-                  Cancel
-                </Button>
+                <div className="flex space-x-2">
+                  <Button type="submit" variant="default">
+                    Save
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setEditProduct(null)}
+                  >
+                    Cancel
+                  </Button>
+                </div>
               </form>
             </CardContent>
           </Card>
         ) : (
-          <Card key={product.id} className="max-w-sm border-none bg-background">
+          <Card key={product.id} className="max-w-sm">
             <CardHeader>
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-48 object-cover mb-2 rounded-t"
+                className="w-full h-48 object-cover rounded-t"
               />
               <h3 className="text-lg font-bold">{product.name}</h3>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">Price: Ksh{product.price.toLocaleString()}</p>
-              <p className="mb-4">Stock: {product.stock}</p>
+              <p className="text-sm text-gray-500 mb-2">
+                Shop: {getShopName(product.shopId)}
+              </p>{" "}
+              {/* Display the shop name */}
+              <p className="mb-2">Price: ${product.price}</p>
+              <p className="mb-2">Stock: {product.stock}</p>
+              <p className="text-sm text-gray-500">{product.description}</p>
               <div className="mt-4 flex space-x-2">
                 <Button
                   variant="secondary"

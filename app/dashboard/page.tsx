@@ -149,7 +149,7 @@ const Dashboard = () => {
         </Card>
         <Card className="bg-white dark:bg-gray-800 shadow-md">
           <CardHeader>Total Value</CardHeader>
-          <CardContent>${metrics.totalValue.toLocaleString()}</CardContent>
+          <CardContent>Ksh{metrics.totalValue.toLocaleString()}</CardContent>
         </Card>
       </div>
       <div className="mt-8">
