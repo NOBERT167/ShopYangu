@@ -1,24 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import axios from "axios";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { toast } from "react-toastify";
+
+interface Shop {
+  id: number;
+  name: string;
+}
 
 interface ProductFormProps {
   onProductAdded: () => void;
+  shops: Shop[];
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded }) => {
+const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded, shops }) => {
+  const [selectedShop, setSelectedShop] = useState<string | undefined>(
+    undefined
+  );
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [stock, setStock] = useState(0);
+  const [price, setPrice] = useState<number>(0);
+  const [stock, setStock] = useState<number>(0);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [shopId, setShopId] = useState<number>(1); // Assume default shop ID
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    if (shops.length > 0 && !selectedShop) {
+      setSelectedShop(shops[0].id.toString());
+    }
+  }, [shops]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!selectedShop) {
+      toast.error("Please select a shop.");
+      return;
+    }
+
     try {
       await axios.post("http://localhost:5000/products", {
         name,
@@ -26,7 +52,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded }) => {
         stock,
         description,
         image,
-        shopId,
+        shopId: Number(selectedShop),
       });
       toast.success("Product added successfully!");
       setName("");
@@ -34,6 +60,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded }) => {
       setStock(0);
       setDescription("");
       setImage("");
+      setSelectedShop(shops.length > 0 ? shops[0].id.toString() : undefined);
       onProductAdded();
     } catch (error) {
       toast.error("Failed to add product. Please try again.");
@@ -46,43 +73,66 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded }) => {
       <Input
         type="text"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setName(e.target.value)
+        } // Typed here
         required
         placeholder="Product Name"
       />
       <Input
         type="number"
         value={price}
-        onChange={(e) => setPrice(Number(e.target.value))}
+        step="any"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setPrice(Number(e.target.value))
+        } // Typed here
         required
         placeholder="Price"
       />
       <Input
         type="number"
         value={stock}
-        onChange={(e) => setStock(Number(e.target.value))}
+        step="1"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setStock(Number(e.target.value))
+        } // Typed here
         required
-        placeholder="Stock"
+        placeholder="Stock Quantity"
       />
       <Textarea
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setDescription(e.target.value)
+        } // Typed here
         required
         placeholder="Product Description"
       />
       <Input
         type="text"
         value={image}
-        onChange={(e) => setImage(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setImage(e.target.value)
+        } // Typed here
         placeholder="Image URL"
       />
-      <Input
-        type="number"
-        value={shopId}
-        onChange={(e) => setShopId(Number(e.target.value))}
-        required
-        placeholder="Shop ID"
-      />
+      <div>
+        <label className="block mb-2 text-sm font-medium">Select Shop</label>
+        <Select
+          value={selectedShop}
+          onValueChange={(value: string) => setSelectedShop(value)} // Typed here
+        >
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select a shop" />
+          </SelectTrigger>
+          <SelectContent>
+            {shops.map((shop) => (
+              <SelectItem key={shop.id} value={shop.id.toString()}>
+                {shop.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
       <Button type="submit" variant="default">
         Add Product
       </Button>

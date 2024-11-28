@@ -135,7 +135,7 @@ const ProductList: React.FC<ProductListProps> = ({
               <h3 className="text-lg font-bold">{product.name}</h3>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">Price: ${product.price}</p>
+              <p className="mb-4">Price: Ksh {product.price}</p>
               <p className="mb-4">Stock: {product.stock}</p>
               <div className="mt-4 flex space-x-2">
                 <Button

@@ -23,18 +23,24 @@ const SidebarDesktop = () => {
         <div className="mt-5">
           <div className="flex flex-col gap-1 w-full">
             <Link href={"/"}>
-              <SidebarButton icon={Home}>Home</SidebarButton>
+              <SidebarButton className="w-full" icon={Home}>
+                Home
+              </SidebarButton>
             </Link>
             <Link href={"/dashboard"}>
-              <SidebarButton icon={LayoutDashboardIcon}>
+              <SidebarButton className="w-full" icon={LayoutDashboardIcon}>
                 Dashboard
               </SidebarButton>
             </Link>
             <Link href={"/products"}>
-              <SidebarButton icon={ShoppingCartIcon}>Products</SidebarButton>
+              <SidebarButton className="w-full" icon={ShoppingCartIcon}>
+                Products
+              </SidebarButton>
             </Link>
             <Link href={"/shops"}>
-              <SidebarButton icon={Store}>Shops</SidebarButton>
+              <SidebarButton className="w-full" icon={Store}>
+                Shops
+              </SidebarButton>
             </Link>
           </div>
         </div>

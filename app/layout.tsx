@@ -1,22 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { Sidebar } from "@/components/ui/sidebar";
-import SidebarDesktop from "./Components/SidebarDesktop";
 import { ThemeProvider } from "./Components/ThemeProvider";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Sidebar from "./Components/Sidebar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider
           attribute="class"
@@ -37,9 +24,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarDesktop />
+          <Sidebar />
           <ToastContainer position="top-right" autoClose={3000} />
-          <main className="ml-[300px] mt-3">{children}</main>
+          <main className="mx-5 mt-16 sm:ml-[300px] sm:mt-5">{children}</main>
         </ThemeProvider>
       </body>
     </html>
