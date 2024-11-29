@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -24,7 +25,7 @@ const SidebarMobile = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          className="fixed flex justify-start top-0 py-3 left-3 w-full bg-white dark:bg-slate-950"
+          className="fixed flex justify-start top-0 pl-5 left-0 w-full rounded-none bg-white dark:bg-slate-700"
           size="icon"
           variant="ghost"
         >

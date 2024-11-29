@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductForm from "../Components/ProductForm";
 import ProductList from "../Components/ProductList";
+import ProductList2 from "../Components/ProductList2";
 
 interface Shop {
   id: number;
@@ -47,12 +48,17 @@ const ProductsPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="px-2 md:px-6 py-4 md:py-4">
+    <div className="px-2 md:px-6 md:py-4">
       <h1 className="text-2xl md:text-4xl font-montserrat font-bold mb-4">
         Products Management
       </h1>
       <ProductForm onProductAdded={fetchProducts} shops={shops} />
-      <ProductList products={products} onProductUpdated={fetchProducts} />
+      {/* <ProductList products={products} onProductUpdated={fetchProducts} /> */}
+      <ProductList2
+        products={products}
+        shops={shops}
+        onProductUpdated={fetchProducts}
+      />
     </div>
   );
 };

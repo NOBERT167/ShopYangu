@@ -6,18 +6,25 @@ import { SheetClose } from "@/components/ui/sheet";
 
 interface SidebarButtonProps extends ButtonProps {
   icon?: LucideIcon;
+  active?: boolean;
 }
+
 const SidebarButton = ({
   icon: Icon,
   children,
   className,
+  active = false,
   ...props
 }: SidebarButtonProps) => {
   return (
     <div>
       <Button
         variant="ghost"
-        className={cn("gap-2 justify-start", className)}
+        className={cn(
+          "gap-2 justify-start",
+          active && "bg-primary/10 text-primary",
+          className
+        )}
         {...props}
       >
         {Icon && <Icon size={20} />}

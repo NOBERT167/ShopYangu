@@ -101,87 +101,135 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { MagicCard } from "@/components/ui/magic-card";
 
 import { BarChart2, ShoppingCart, Users, TrendingUp } from "lucide-react";
+import Wrapper from "./Components/Wrapper";
+import Container from "./Components/Container";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground">
       {/* Hero Section with Sparkle Effect */}
-      <div className="relative w-full overflow-hidden">
-        <SparklesCore
-          background="transparent"
-          minSize={0.4}
-          maxSize={1}
-          particleDensity={50}
-          className="absolute inset-0 z-0"
-        />
-        <div className="relative z-10 container mx-auto px-4 py-16 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Manage Your Shop <Highlight>Effortlessly</Highlight>
-          </h1>
-          <p className="text-xl mb-8 text-muted-foreground dark:text-dark-muted-foreground">
-            Streamline your business operations with powerful, intuitive tools
-          </p>
-          <div className="flex justify-center space-x-4">
-            <Button variant="default" size="lg">
-              Get Started
-            </Button>
-            <Button variant="outline" size="lg">
-              Learn More
-            </Button>
+      <Wrapper>
+        <Container>
+          <div className="relative w-full overflow-hidden">
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1}
+              particleDensity={50}
+              className="absolute inset-0 z-0"
+            />
+            <div className="relative z-10 container mx-auto px-4 py-16 text-center">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 mt-10 font-montserrat">
+                Manage Your Shop <Highlight>Effortlessly</Highlight>
+              </h1>
+              <p className="text-xl mb-8 text-muted-foreground dark:text-dark-muted-foreground font-roboto mt-8">
+                Streamline your business operations with powerful, intuitive
+                tools
+              </p>
+              <div className="flex justify-center space-x-4">
+                <Button variant="default" size="lg">
+                  Get Started
+                </Button>
+                <Button variant="outline" size="lg">
+                  Learn More
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </Container>
+      </Wrapper>
 
       {/* Features Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
-            <CardHeader>
-              <BarChart2 className="w-10 h-10 text-primary" />
-              <CardTitle>Analytics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Gain insights with real-time business analytics
-              </p>
-            </CardContent>
-          </MagicCard>
+          <Wrapper>
+            <Container>
+              <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
+                <CardHeader>
+                  <BarChart2 className="w-10 h-10 text-primary" />
+                  <CardTitle>Analytics</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Gain insights with real-time business analytics
+                  </p>
+                </CardContent>
+                <BorderBeam
+                  className="rounded-xl"
+                  size={250}
+                  delay={9}
+                  duration={4}
+                />
+              </MagicCard>
+            </Container>
+          </Wrapper>
 
-          <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
-            <CardHeader>
-              <ShoppingCart className="w-10 h-10 text-primary" />
-              <CardTitle>Inventory</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Track and manage your product inventory
-              </p>
-            </CardContent>
-          </MagicCard>
+          <Wrapper>
+            <Container>
+              <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
+                <CardHeader>
+                  <ShoppingCart className="w-10 h-10 text-primary" />
+                  <CardTitle>Inventory</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Track and manage your product inventory
+                  </p>
+                </CardContent>
+                <BorderBeam
+                  className="rounded-xl"
+                  size={250}
+                  delay={9}
+                  duration={4}
+                />
+              </MagicCard>
+            </Container>
+          </Wrapper>
 
-          <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
-            <CardHeader>
-              <Users className="w-10 h-10 text-primary" />
-              <CardTitle>Customer Management</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Keep track of customer interactions
-              </p>
-            </CardContent>
-          </MagicCard>
+          <Wrapper>
+            <Container>
+              <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
+                <CardHeader>
+                  <Users className="w-10 h-10 text-primary" />
+                  <CardTitle>Customer Management</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Keep track of customer interactions
+                  </p>
+                </CardContent>
+                <BorderBeam
+                  className="rounded-xl"
+                  size={250}
+                  delay={9}
+                  duration={4}
+                />
+              </MagicCard>
+            </Container>
+          </Wrapper>
 
-          <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
-            <CardHeader>
-              <TrendingUp className="w-10 h-10 text-primary" />
-              <CardTitle>Sales Tracking</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Monitor and optimize your sales performance
-              </p>
-            </CardContent>
-          </MagicCard>
+          <Wrapper>
+            <Container>
+              <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
+                <CardHeader>
+                  <TrendingUp className="w-10 h-10 text-primary" />
+                  <CardTitle>Sales Tracking</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Monitor and optimize your sales performance
+                  </p>
+                </CardContent>
+                <BorderBeam
+                  size={250}
+                  delay={9}
+                  className="rounded-xl"
+                  duration={4}
+                />
+              </MagicCard>
+            </Container>
+          </Wrapper>
         </div>
       </div>
     </div>

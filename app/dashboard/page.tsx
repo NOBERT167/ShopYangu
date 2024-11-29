@@ -132,28 +132,48 @@ const Dashboard = () => {
   if (!isClient) return null;
 
   return (
-    <div className="p-10">
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+    <div className="p-10 w-full relative">
+      <h1 className="text-2xl md:text-4xl font-bold font-montserrat mb-4">
+        Dashboard
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="bg-white dark:bg-gray-800 shadow-md">
-          <CardHeader>Total Shops</CardHeader>
-          <CardContent>{metrics.totalShops}</CardContent>
+          <CardHeader className="font-montserrat font-semibold">
+            Total Shops
+          </CardHeader>
+          <CardContent className="font-roboto text-foreground/80 font-normal">
+            {metrics.totalShops}
+          </CardContent>
         </Card>
         <Card className="bg-white dark:bg-gray-800 shadow-md">
-          <CardHeader>Total Products</CardHeader>
-          <CardContent>{metrics.totalProducts}</CardContent>
+          <CardHeader className="font-montserrat font-semibold">
+            Total Products
+          </CardHeader>
+          <CardContent className="font-roboto text-foreground/80 font-normal">
+            {metrics.totalProducts}
+          </CardContent>
         </Card>
         <Card className="bg-white dark:bg-gray-800 shadow-md">
-          <CardHeader>Total Stock</CardHeader>
-          <CardContent>{metrics.totalStock}</CardContent>
+          <CardHeader className="font-montserrat font-semibold">
+            Total Stock
+          </CardHeader>
+          <CardContent className="font-roboto text-foreground/80 font-normal">
+            {metrics.totalStock}
+          </CardContent>
         </Card>
         <Card className="bg-white dark:bg-gray-800 shadow-md">
-          <CardHeader>Total Value</CardHeader>
-          <CardContent>Ksh{metrics.totalValue.toLocaleString()}</CardContent>
+          <CardHeader className="font-montserrat font-semibold">
+            Total Value
+          </CardHeader>
+          <CardContent className="font-roboto text-foreground/80 font-normal">
+            Ksh {metrics.totalValue.toLocaleString()}
+          </CardContent>
         </Card>
       </div>
       <div className="mt-8">
-        <h2 className="text-xl font-bold mb-4">Stock Distribution</h2>
+        <h2 className="text-xl font-montserrat font-bold mb-4">
+          Stock Distribution
+        </h2>
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
           <Bar data={chartData} />
         </div>
