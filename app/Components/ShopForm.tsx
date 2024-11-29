@@ -34,14 +34,16 @@ const ShopForm: React.FC<ShopFormProps> = ({ onShopAdded }) => {
   };
 
   return (
-    <Card className="bg-background w-full sm:max-w-lg">
+    <Card className="bg-white dark:bg-gray-800/50 w-full sm:max-w-lg">
       <CardHeader>
-        <h2 className="text-lg font-bold">Add New Shop</h2>
+        <h2 className="text-lg font-bold font-roboto">Add New Shop</h2>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block mb-2 text-sm font-medium">Shop Name</label>
+            <label className="block mb-2 text-sm font-medium font-montserrat">
+              Shop Name
+            </label>
             <Input
               type="text"
               value={name}
@@ -51,7 +53,7 @@ const ShopForm: React.FC<ShopFormProps> = ({ onShopAdded }) => {
             />
           </div>
           <div>
-            <label className="block mb-2 text-sm font-medium">
+            <label className="block mb-2 text-sm font-medium font-montserrat">
               Shop Description
             </label>
             <Textarea
@@ -62,17 +64,21 @@ const ShopForm: React.FC<ShopFormProps> = ({ onShopAdded }) => {
             />
           </div>
           <div>
-            <label className="block mb-2 text-sm font-medium">
+            <label className="block mb-2 text-sm font-medium font-montserrat">
               Shop Logo URL
             </label>
             <Input
               type="text"
               value={logo}
               onChange={(e) => setLogo(e.target.value)}
-              className="dark:bg-gray-700 dark:text-gray-200"
+              className="dark:bg-gray-700 dark:text-gray-200 font-montserrat"
             />
           </div>
-          <Button type="submit" variant="default">
+          <Button
+            type="submit"
+            variant="default"
+            className="font-montserrat text-white"
+          >
             Add Shop
           </Button>
         </form>

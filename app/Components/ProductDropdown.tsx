@@ -51,7 +51,7 @@ const ProductDropdown: React.FC<ProductDropdownProps> = ({ shopId }) => {
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="w-full text-sm dark:bg-gray-700 dark:text-gray-200"
+          className="w-full text-sm font-montserrat dark:bg-gray-700 dark:text-gray-200"
         >
           {isOpen ? "Hide Products" : "Show Products"}
         </Button>
@@ -66,14 +66,18 @@ const ProductDropdown: React.FC<ProductDropdownProps> = ({ shopId }) => {
         ) : products.length > 0 ? (
           products.map((product) => (
             <DropdownMenuItem key={product.id} className="flex flex-col">
-              <span className="font-semibold">{product.name}</span>
-              <span className="text-sm">
+              <span className="font-semibold font-montserrat">
+                {product.name}
+              </span>
+              <span className="text-sm font-roboto">
                 Price: ${product.price} | Stock: {product.stock}
               </span>
             </DropdownMenuItem>
           ))
         ) : (
-          <DropdownMenuItem>No products found for this shop.</DropdownMenuItem>
+          <DropdownMenuItem className="font-roboto">
+            No products found for this shop.
+          </DropdownMenuItem>
         )}
       </DropdownMenuContent>
     </DropdownMenu>

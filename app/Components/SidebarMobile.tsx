@@ -37,7 +37,9 @@ const SidebarMobile = () => {
             <ModeToggle />
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-lg font-semibold mx-3">ShopYangu</span>
+            <h3 className="mx-3 text-2xl flex font-semibold text-foreground font-roboto">
+              Shop <span className="text-primary">Yangu</span>
+            </h3>
             <SheetClose asChild>
               <Button className="h-7 w-7 p-0" variant="ghost">
                 <X size={15} />
@@ -48,22 +50,28 @@ const SidebarMobile = () => {
         <div className="mt-5">
           <div className="flex flex-col gap-1 w-full">
             <Link href={"/"}>
-              <SidebarButton className="w-full" icon={Home}>
+              <SidebarButton className="w-full font-montserrat" icon={Home}>
                 Home
               </SidebarButton>
             </Link>
             <Link href={"/dashboard"}>
-              <SidebarButton className="w-full" icon={LayoutDashboardIcon}>
+              <SidebarButton
+                className="w-full font-montserrat"
+                icon={LayoutDashboardIcon}
+              >
                 Dashboard
               </SidebarButton>
             </Link>
             <Link href={"/products"}>
-              <SidebarButton className="w-full" icon={ShoppingCartIcon}>
+              <SidebarButton
+                className="w-full font-montserrat"
+                icon={ShoppingCartIcon}
+              >
                 Products
               </SidebarButton>
             </Link>
             <Link href={"/shops"}>
-              <SidebarButton className="w-full" icon={Store}>
+              <SidebarButton className="w-full font-montserrat" icon={Store}>
                 Shops
               </SidebarButton>
             </Link>

@@ -26,7 +26,7 @@ export default function RootLayout({
         >
           <Sidebar />
           <ToastContainer position="top-right" autoClose={3000} />
-          <main className="px-5 mt-16 sm:pl-[300px] bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground sm:mt-0">
+          <main className="px-5 z-10 mt-16 sm:pl-[300px] bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground sm:mt-0">
             {children}
           </main>
         </ThemeProvider>

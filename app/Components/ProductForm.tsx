@@ -69,22 +69,29 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded, shops }) => {
 
   return (
     <>
-      <h2 className="text-xl font-bold mb-4">Add New Product</h2>
+      <h2 className="text-xl font-bold mb-4 font-montserrat">
+        Add New Product
+      </h2>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 bg-background w-full sm:max-w-lg p-8 mb-10 rounded-md shadow-md"
+        className="space-y-4 bg-white dark:bg-gray-800/50 w-full sm:max-w-2xl px-6 py-3 mb-10 rounded-md shadow-md"
       >
-        <label className="block mb-2 text-sm font-medium">Product Name</label>
+        <label className="block mb-2 text-sm font-medium font-roboto">
+          Product Name
+        </label>
         <Input
           type="text"
           value={name}
+          className="font-montserrat"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.target.value)
           } // Typed here
           required
           placeholder="Product Name"
         />
-        <label className="block mb-2 text-sm font-medium">Product Price</label>
+        <label className="block mb-2 text-sm font-medium font-roboto">
+          Product Price
+        </label>
         <Input
           type="number"
           value={price}
@@ -93,12 +100,16 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded, shops }) => {
             setPrice(Number(e.target.value))
           } // Typed here
           required
+          className="font-montserrat"
           placeholder="Price"
         />
-        <label className="block mb-2 text-sm font-medium">Stock</label>
+        <label className="block mb-2 text-sm font-medium font-roboto">
+          Stock
+        </label>
         <Input
           type="number"
           value={stock}
+          className="font-montserrat"
           step="1"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setStock(Number(e.target.value))
@@ -106,28 +117,34 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded, shops }) => {
           required
           placeholder="Stock Quantity"
         />
-        <label className="block mb-2 text-sm font-medium">
+        <label className="block mb-2 text-sm font-medium font-roboto">
           Product Description
         </label>
         <Textarea
           value={description}
+          className="font-montserrat"
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
             setDescription(e.target.value)
           } // Typed here
           required
           placeholder="Product Description"
         />
-        <label className="block mb-2 text-sm font-medium">Image URL</label>
+        <label className="block mb-2 text-sm font-medium font-roboto">
+          Image URL
+        </label>
         <Input
           type="text"
           value={image}
+          className="font-montserrat"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setImage(e.target.value)
           } // Typed here
           placeholder="Image URL"
         />
         <div>
-          <label className="block mb-2 text-sm font-medium">Select Shop</label>
+          <label className="block mb-2 text-sm font-medium font-roboto">
+            Select Shop
+          </label>
           <Select
             value={selectedShop}
             onValueChange={(value: string) => setSelectedShop(value)} // Typed here

@@ -47,8 +47,10 @@ const ProductsPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Products Management</h1>
+    <div className="px-2 md:px-6 py-4 md:py-4">
+      <h1 className="text-2xl md:text-4xl font-montserrat font-bold mb-4">
+        Products Management
+      </h1>
       <ProductForm onProductAdded={fetchProducts} shops={shops} />
       <ProductList products={products} onProductUpdated={fetchProducts} />
     </div>

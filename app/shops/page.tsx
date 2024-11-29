@@ -28,13 +28,17 @@ const ShopsPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Shops Management</h1>
+    <div className="px-2 md:px-6 py-4 md:py-4">
+      <h1 className="text-2xl md:text-4xl font-bold mb-4 font-montserrat">
+        Shops Management
+      </h1>
       <div className="mb-6">
         <ShopForm onShopAdded={fetchShops} />
       </div>
       <div>
-        <h2 className="text-xl font-bold mb-4">List of Shops</h2>
+        <h2 className="text-xl font-bold mb-4 font-montserrat">
+          List of Shops
+        </h2>
         <ShopList shops={shops} onShopUpdated={fetchShops} />
       </div>
     </div>

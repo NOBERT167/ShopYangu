@@ -59,21 +59,23 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {shops.map((shop) =>
         editShop?.id === shop.id ? (
-          <Card key={shop.id}>
+          <Card key={shop.id} className="bg-white dark:bg-gray-800/50">
             <CardHeader>
-              <h3 className="text-lg font-bold">Edit Shop</h3>
+              <h3 className="text-lg font-bold font-roboto">Edit Shop</h3>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleUpdate} className="space-y-4">
                 <Input
                   type="text"
                   value={editShop.name}
+                  className="font-roboto"
                   onChange={(e) => handleInputChange("name", e.target.value)}
                   required
                   placeholder="Shop Name"
                 />
                 <Textarea
                   value={editShop.description}
+                  className="font-roboto"
                   onChange={(e) =>
                     handleInputChange("description", e.target.value)
                   }
@@ -83,16 +85,22 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
                 <Input
                   type="text"
                   value={editShop.logo}
+                  className="font-roboto"
                   onChange={(e) => handleInputChange("logo", e.target.value)}
                   placeholder="Shop Logo URL"
                 />
                 <div className="flex space-x-2">
-                  <Button type="submit" variant="default">
+                  <Button
+                    type="submit"
+                    variant="default"
+                    className="font-montserrat"
+                  >
                     Save
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
+                    className="font-montserrat"
                     onClick={() => setEditShop(null)}
                   >
                     Cancel
@@ -102,24 +110,32 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
             </CardContent>
           </Card>
         ) : (
-          <Card key={shop.id} className="border-none shadow-lg">
+          <Card
+            key={shop.id}
+            className="bg-white dark:bg-gray-800/50 border-none shadow-lg"
+          >
             <CardHeader>
               <img
                 src={shop.logo}
                 alt={shop.name}
-                className="w-16 h-16 mb-2 rounded"
+                className="w-16 h-16 mb-2 rounded font-montserrat"
               />
-              <h3 className="text-lg font-bold">{shop.name}</h3>
+              <h3 className="text-lg font-bold font-montserrat">{shop.name}</h3>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">{shop.description}</p>
+              <p className="mb-4 font-montserrat">{shop.description}</p>
               <ProductDropdown shopId={shop.id} />
               <div className="mt-4 flex space-x-2">
-                <Button variant="secondary" onClick={() => setEditShop(shop)}>
+                <Button
+                  variant="secondary"
+                  className="font-montserrat"
+                  onClick={() => setEditShop(shop)}
+                >
                   Edit
                 </Button>
                 <Button
                   variant="destructive"
+                  className="font-montserrat"
                   onClick={() => handleDelete(shop.id)}
                 >
                   Delete
