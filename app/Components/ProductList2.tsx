@@ -101,7 +101,7 @@ const ProductList2: React.FC<ProductListProps> = ({
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <select
-          className="border border-gray-300 rounded px-4 py-2 font-roboto"
+          className="bg-white dark:bg-gray-800/50 rounded px-4 py-2 font-roboto"
           value={selectedShop || ""}
           onChange={(e) =>
             setSelectedShop(
@@ -111,7 +111,11 @@ const ProductList2: React.FC<ProductListProps> = ({
         >
           <option value="">All Shops</option>
           {shops.map((shop) => (
-            <option key={shop.id} value={shop.id}>
+            <option
+              className="bg-white dark:bg-gray-800/50"
+              key={shop.id}
+              value={shop.id}
+            >
               {shop.name}
             </option>
           ))}
@@ -224,11 +228,6 @@ const ProductList2: React.FC<ProductListProps> = ({
               <CardContent>
                 <p className="mb-4 font-roboto">
                   Price: Ksh{product.price.toLocaleString()}
-                </p>
-                <p className="mb-4 font-roboto">
-                  Shop:{" "}
-                  {shops.find((s) => s.id === product.shopId)?.name ||
-                    "Unknown"}
                 </p>
                 <p className="mb-4 font-roboto">Stock: {product.stock}</p>
                 <div className="mt-4 flex space-x-2">
