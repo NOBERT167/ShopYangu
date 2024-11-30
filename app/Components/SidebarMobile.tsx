@@ -19,13 +19,22 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { SidebarButtonSheet as SidebarButton } from "./SidebarButton";
+import { usePathname } from "next/navigation";
 
 const SidebarMobile = () => {
+  const pathname = usePathname();
+
+  const navItems = [
+    { href: "/", label: "Home", icon: Home },
+    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboardIcon },
+    { href: "/products", label: "Products", icon: ShoppingCartIcon },
+    { href: "/shops", label: "Shops", icon: Store },
+  ];
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          className="fixed flex justify-start top-0 pl-5 left-0 w-full rounded-none bg-white dark:bg-slate-700"
+          className="fixed z-50 flex justify-start top-0 pl-5 left-0 w-full rounded-none bg-white dark:bg-slate-700"
           size="icon"
           variant="ghost"
         >
@@ -50,32 +59,17 @@ const SidebarMobile = () => {
         </SheetHeader>
         <div className="mt-5">
           <div className="flex flex-col gap-1 w-full">
-            <Link href={"/"}>
-              <SidebarButton className="w-full font-montserrat" icon={Home}>
-                Home
-              </SidebarButton>
-            </Link>
-            <Link href={"/dashboard"}>
-              <SidebarButton
-                className="w-full font-montserrat"
-                icon={LayoutDashboardIcon}
-              >
-                Dashboard
-              </SidebarButton>
-            </Link>
-            <Link href={"/products"}>
-              <SidebarButton
-                className="w-full font-montserrat"
-                icon={ShoppingCartIcon}
-              >
-                Products
-              </SidebarButton>
-            </Link>
-            <Link href={"/shops"}>
-              <SidebarButton className="w-full font-montserrat" icon={Store}>
-                Shops
-              </SidebarButton>
-            </Link>
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <SidebarButton
+                  className="w-full font-montserrat"
+                  icon={item.icon}
+                  active={pathname === item.href}
+                >
+                  {item.label}
+                </SidebarButton>
+              </Link>
+            ))}
           </div>
         </div>
       </SheetContent>

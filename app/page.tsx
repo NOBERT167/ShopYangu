@@ -1,98 +1,3 @@
-// import Link from "next/link";
-// import React from "react"; // Use this if you're using React Router, or Next.js navigation if it's a Next app.
-
-// const LandingPage: React.FC = () => {
-//   return (
-//     <div className=" ">
-//       {/* Hero Section */}
-//       <section className="text-center py-16 bg-background">
-//         <div className="max-w-3xl mx-auto">
-//           <h2 className="text-4xl font-bold text-gray-800 mb-4">
-//             Welcome to ShopManager
-//           </h2>
-//           <p className="text-lg text-gray-600 mb-6">
-//             Manage your products and shops with ease. Keep track of inventory,
-//             update products, and manage shop details all in one place.
-//           </p>
-//           <Link
-//             href="/products"
-//             className="inline-block bg-blue-600 text-white py-2 px-6 rounded-lg text-lg hover:bg-blue-700 transition"
-//           >
-//             Get Started
-//           </Link>
-//         </div>
-//       </section>
-
-//       {/* Features Section */}
-//       <section className="py-16 bg-background">
-//         <div className="max-w-screen-xl mx-auto text-center">
-//           <h3 className="text-3xl font-semibold text-gray-800 mb-12">
-//             Key Features
-//           </h3>
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-//             <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-//               <h4 className="text-xl font-semibold text-gray-700 mb-4">
-//                 Product Management
-//               </h4>
-//               <p className="text-gray-600">
-//                 Add, edit, and delete products with ease. Track inventory and
-//                 keep everything updated.
-//               </p>
-//             </div>
-//             <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-//               <h4 className="text-xl font-semibold text-gray-700 mb-4">
-//                 Shop Management
-//               </h4>
-//               <p className="text-gray-600">
-//                 Manage your shops and view detailed information about each.
-//                 Easily associate products with shops.
-//               </p>
-//             </div>
-//             <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-//               <h4 className="text-xl font-semibold text-gray-700 mb-4">
-//                 Real-time Notifications
-//               </h4>
-//               <p className="text-gray-600">
-//                 Get instant updates with toast notifications when actions like
-//                 adding, updating, or deleting products are performed.
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Call to Action */}
-//       <section className="text-center py-16 bg-blue-600 text-white">
-//         <div className="max-w-screen-md mx-auto">
-//           <h3 className="text-3xl font-semibold mb-4">
-//             Ready to Manage Your Products and Shops?
-//           </h3>
-//           <p className="text-lg mb-8">
-//             Get started today and simplify your product and shop management with
-//             ShopManager.
-//           </p>
-//           <Link
-//             href="/products"
-//             className="inline-block bg-white text-blue-600 py-2 px-6 rounded-lg text-lg hover:bg-gray-100 transition"
-//           >
-//             Start Managing
-//           </Link>
-//         </div>
-//       </section>
-
-//       {/* Footer */}
-//       <footer className="bg-gray-800 text-white py-6">
-//         <div className="max-w-screen-xl mx-auto text-center">
-//           <p>&copy; 2024 ShopManager. All Rights Reserved.</p>
-//         </div>
-//       </footer>
-//     </div>
-//   );
-// };
-{
-  /* <div className="absolute inset-0 dark:bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[linear-gradient(to_right,#161616_1px,transparent_1px),linear-gradient(to_bottom,#161616_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] -z-10 h-[150vh]" /> */
-}
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -100,10 +5,35 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { MagicCard } from "@/components/ui/magic-card";
 
-import { BarChart2, ShoppingCart, Users, TrendingUp } from "lucide-react";
+import {
+  BarChart2,
+  ShoppingCart,
+  Users,
+  TrendingUp,
+  ArrowRight,
+  Heart,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Github,
+  LinkIcon,
+  WholeWordIcon,
+  WholeWord,
+  ExternalLink,
+  LucideComputer,
+  Computer,
+  Laptop,
+} from "lucide-react";
 import Wrapper from "./Components/Wrapper";
 import Container from "./Components/Container";
 import { BorderBeam } from "@/components/ui/border-beam";
+import SectionBadge from "@/components/ui/SectionBadge";
+import Icons from "./Components/Globals/icons";
+import { features } from "./Components/Globals/Constants";
+import Link from "next/link";
+import { LampContainer } from "@/components/ui/lamp";
+import GridPattern from "@/components/ui/grid-pattern";
+import { cn } from "@/lib/utils";
 
 const LandingPage = () => {
   return (
@@ -128,10 +58,14 @@ const LandingPage = () => {
                 tools
               </p>
               <div className="flex justify-center space-x-4">
-                <Button variant="default" size="lg">
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="text-white font-montserrat"
+                >
                   Get Started
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="font-roboto">
                   Learn More
                 </Button>
               </div>
@@ -141,17 +75,17 @@ const LandingPage = () => {
       </Wrapper>
 
       {/* Features Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 py-20">
           <Wrapper>
             <Container>
               <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
                 <CardHeader>
                   <BarChart2 className="w-10 h-10 text-primary" />
-                  <CardTitle>Analytics</CardTitle>
+                  <CardTitle className="font-montserrat">Analytics</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground font-roboto mb-4">
                     Gain insights with real-time business analytics
                   </p>
                 </CardContent>
@@ -170,10 +104,10 @@ const LandingPage = () => {
               <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
                 <CardHeader>
                   <ShoppingCart className="w-10 h-10 text-primary" />
-                  <CardTitle>Inventory</CardTitle>
+                  <CardTitle className="font-montserrat">Inventory</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground font-roboto mb-4">
                     Track and manage your product inventory
                   </p>
                 </CardContent>
@@ -192,10 +126,12 @@ const LandingPage = () => {
               <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
                 <CardHeader>
                   <Users className="w-10 h-10 text-primary" />
-                  <CardTitle>Customer Management</CardTitle>
+                  <CardTitle className="font-montserrat">
+                    Customer Management
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground font-roboto">
                     Keep track of customer interactions
                   </p>
                 </CardContent>
@@ -214,10 +150,12 @@ const LandingPage = () => {
               <MagicCard className="dark:bg-gray-800/50 hover:bg-gray-950">
                 <CardHeader>
                   <TrendingUp className="w-10 h-10 text-primary" />
-                  <CardTitle>Sales Tracking</CardTitle>
+                  <CardTitle className="font-montserrat">
+                    Sales Tracking
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground font-roboto mb-4">
                     Monitor and optimize your sales performance
                   </p>
                 </CardContent>
@@ -231,7 +169,158 @@ const LandingPage = () => {
             </Container>
           </Wrapper>
         </div>
+
+        <div className="py-12">
+          <Wrapper className="flex flex-col items-center relative">
+            <Container>
+              <div className="max-w-md md:mx-auto text-start md:text-center">
+                <SectionBadge title="Features" />
+                <h3 className="text-3xl md:text-4xl font-semibold mt-6">
+                  Discover our powerful features
+                </h3>
+                <p className="text-muted-foreground mt-6 font-montserrat">
+                  ShopYangu offers the following features to help you Elevate
+                  your business
+                </p>
+              </div>
+            </Container>
+
+            <Container className="flex flex-col w-full justify-center items-center py-10 md:py-20">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+                {features.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-start py-4 px-4 md:px-6 lg:px-8 lg:py-6"
+                  >
+                    <div className="flex items-center justify-center">
+                      <feature.icon className="w-8 h-8 bg-primary p-1 rounded-md" />
+                    </div>
+                    <h3 className="text-lg font-semibold mt-4 font-roboto">
+                      {feature.title}
+                    </h3>
+                    <p className="text-muted-foreground text-start mt-2 font-montserrat">
+                      {feature.info}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Container>
+          </Wrapper>
+        </div>
       </div>
+
+      {/* Call to Action */}
+      <div className="">
+        <Wrapper className="flex flex-col items-center justify-center py-4 relative">
+          <Container>
+            <LampContainer>
+              <div className="flex flex-col items-center justify-center relative w-full text-center">
+                <h2 className="text-4xl lg:text-5xl xl:text-6xl lg:!leading-snug font-semibold mt-8">
+                  Take the Leap Today
+                </h2>
+                <p className="text-muted-foreground mt-6 max-w-md mx-auto">
+                  Join thousands of businesses already simplifying their
+                  management processes with ShopManager.
+                </p>
+                <Button variant="default" className="mt-6" asChild>
+                  <Link href="/shops" className="font-montserrat text-white">
+                    Explore Now!
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </LampContainer>
+          </Container>
+        </Wrapper>
+      </div>
+
+      {/* footer */}
+      <Wrapper>
+        <Container>
+          <footer className="">
+            <div className="relative size-full overflow-hidden  bg-background py-8 px-2 md:px-4">
+              <div className="">
+                <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 mb-10">
+                  <div className="flex flex-wrap items-center space-x-2 z-30 justify-center sm:justify-start">
+                    <span className="text-gray-600 font-montserrat dark:text-gray-300 mb-2 sm:mb-0 text-center sm:text-left">
+                      Designed and crafted with ❤️ by{" "}
+                    </span>
+                    <Link
+                      href="https://nobertdev-portfolio.netlify.app/"
+                      target="_blank"
+                      className="text-primary hover:text-primary/80 transition-colors mb-4 md:mb-0 text-center sm:text-left"
+                    >
+                      {" <Nobert.Dev />"}
+                    </Link>
+                  </div>
+
+                  <div className="flex space-x-4">
+                    <Link
+                      href="https://github.com/NOBERT167"
+                      target="_blank"
+                      className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                    >
+                      <Laptop size={24} />
+                    </Link>
+                    <Link
+                      href="https://github.com/NOBERT167"
+                      target="_blank"
+                      className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                    >
+                      <Github size={24} />
+                    </Link>
+
+                    <Link
+                      href="https://www.linkedin.com/in/langat-kipkoech-nobert-ab44661ba/"
+                      target="_blank"
+                      className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      <Linkedin size={24} />
+                    </Link>
+
+                    <Link
+                      href="https://twitter.com/Darkcode1999"
+                      target="_blank"
+                      className="text-gray-700 dark:text-gray-300 hover:text-blue-400 dark:hover:text-blue-300 transition-colors"
+                    >
+                      <Twitter size={24} />
+                    </Link>
+
+                    <Link
+                      href="https://www.instagram.com/nobert.dev/"
+                      target="_blank"
+                      className="text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-colors"
+                    >
+                      <Instagram size={24} />
+                    </Link>
+                    <Link
+                      href="https://bio.link/nobertdev"
+                      target="_blank"
+                      className="text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-colors"
+                    >
+                      <LinkIcon size={24} />
+                    </Link>
+                  </div>
+                </div>
+                <div className="text-sm text-center font-montserrat text-gray-600 dark:text-gray-300 mt-4 md:mb-0">
+                  © {new Date().getFullYear()} Nobert.Dev All rights reserved.
+                </div>
+              </div>
+              <GridPattern
+                width={20}
+                height={20}
+                x={-1}
+                y={-1}
+                className={cn(
+                  "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+                )}
+              />
+              <div className="pointer-events-none absolute w-1/3 bg-gradient-to-r from-background left-0 inset-y-0"></div>
+              <div className="pointer-events-none absolute w-1/3 bg-gradient-to-l from-background right-0 inset-y-0"></div>
+            </div>
+          </footer>
+        </Container>
+      </Wrapper>
     </div>
   );
 };
