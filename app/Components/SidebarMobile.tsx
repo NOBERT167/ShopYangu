@@ -34,11 +34,11 @@ const SidebarMobile = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          className="fixed z-50 flex justify-start top-0 py-8 pl-5 left-0 w-full rounded-none bg-white dark:bg-slate-700"
+          className="fixed z-50 flex justify-start top-0 py-5 pl-5 left-0 w-full rounded-none bg-white dark:bg-slate-700"
           size="icon"
           variant="ghost"
         >
-          <Menu size={20} />
+          <Menu size={32} />
         </Button>
       </SheetTrigger>
       <SheetContent side="left" hideClose className="px-3 py-4">
