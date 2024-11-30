@@ -132,7 +132,7 @@ const Dashboard = () => {
   if (!isClient) return null;
 
   return (
-    <div className="p-10 w-full relative">
+    <div className="px-2 md:px-10 py-6 w-full relative">
       <h1 className="text-2xl md:text-4xl font-bold font-montserrat mb-4">
         Dashboard
       </h1>
