@@ -25,7 +25,7 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
   // Handle delete
   const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/shops/${id}`);
+      await axios.delete(`https://shop-yangudb.onrender.com/shops/${id}`);
       toast.success("Shop deleted successfully!");
       onShopUpdated(); // Refresh the shop list
     } catch (error) {
@@ -39,7 +39,10 @@ const ShopList: React.FC<ShopListProps> = ({ shops, onShopUpdated }) => {
     if (!editShop) return;
 
     try {
-      await axios.put(`http://localhost:5000/shops/${editShop.id}`, editShop);
+      await axios.put(
+        `https://shop-yangudb.onrender.com/shops/${editShop.id}`,
+        editShop
+      );
       toast.success("Shop updated successfully!");
       setEditShop(null); // Exit edit mode
       onShopUpdated(); // Refresh the shop list

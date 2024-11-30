@@ -73,10 +73,10 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const shopsResponse = await axios.get<Shop[]>(
-          "http://localhost:5000/shops"
+          "https://shop-yangudb.onrender.com/shops"
         );
         const productsResponse = await axios.get<Product[]>(
-          "http://localhost:5000/products"
+          "https://shop-yangudb.onrender.com/products"
         );
 
         const shops = shopsResponse.data;

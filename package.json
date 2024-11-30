@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server --watch db.json --port 5000",
-    "deploy": "concurrently \"npm run json-server\" \"npm run build && npm run start\"",
     "lint": "next lint"
   },
   "dependencies": {

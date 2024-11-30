@@ -18,7 +18,7 @@ const ShopForm: React.FC<ShopFormProps> = ({ onShopAdded }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/shops", {
+      await axios.post("https://shop-yangudb.onrender.com/shops", {
         name,
         description,
         logo,

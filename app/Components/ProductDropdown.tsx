@@ -29,7 +29,7 @@ const ProductDropdown: React.FC<ProductDropdownProps> = ({ shopId }) => {
     try {
       setIsLoading(true);
       const response = await axios.get<Product[]>(
-        `http://localhost:5000/products?shopId=${shopId}`
+        `https://shop-yangudb.onrender.com/products?shopId=${shopId}`
       );
       setProducts(response.data);
     } catch (error) {

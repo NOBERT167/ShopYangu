@@ -46,7 +46,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onProductAdded, shops }) => {
     }
 
     try {
-      await axios.post("http://localhost:5000/products", {
+      await axios.post("https://shop-yangudb.onrender.com/products", {
         name,
         price,
         stock,

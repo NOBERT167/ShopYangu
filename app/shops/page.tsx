@@ -16,7 +16,9 @@ const ShopsPage: React.FC = () => {
 
   const fetchShops = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/shops");
+      const response = await axios.get(
+        "https://shop-yangudb.onrender.com/shops"
+      );
       setShops(response.data);
     } catch (error) {
       console.error("Error fetching shops:", error);

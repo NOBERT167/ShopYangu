@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductForm from "../Components/ProductForm";
-import ProductList from "../Components/ProductList";
 import ProductList2 from "../Components/ProductList2";
 
 interface Shop {
@@ -26,8 +25,14 @@ const ProductsPage: React.FC = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/products");
-      setProducts(response.data);
+      const response = await axios.get(
+        "https://shop-yangudb.onrender.com/products"
+      );
+      // Sort products in descending order by ID (newest first)
+      const sortedProducts = response.data.sort(
+        (a: Product, b: Product) => b.id - a.id
+      );
+      setProducts(sortedProducts);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -35,7 +40,9 @@ const ProductsPage: React.FC = () => {
 
   const fetchShops = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/shops");
+      const response = await axios.get(
+        "https://shop-yangudb.onrender.com/shops"
+      );
       setShops(response.data);
     } catch (error) {
       console.error("Error fetching shops:", error);
@@ -53,7 +60,6 @@ const ProductsPage: React.FC = () => {
         Products Management
       </h1>
       <ProductForm onProductAdded={fetchProducts} shops={shops} />
-      {/* <ProductList products={products} onProductUpdated={fetchProducts} /> */}
       <ProductList2
         products={products}
         shops={shops}

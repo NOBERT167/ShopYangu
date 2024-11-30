@@ -30,7 +30,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
   const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/products/${id}`);
+      await axios.delete(`https://shop-yangudb.onrender.com/products/${id}`);
       toast.success("Product deleted successfully!");
       onProductUpdated();
     } catch (error) {
@@ -44,7 +44,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
     try {
       await axios.put(
-        `http://localhost:5000/products/${editProduct.id}`,
+        `https://shop-yangudb.onrender.com/${editProduct.id}`,
         editProduct
       );
       toast.success("Product updated successfully!");
